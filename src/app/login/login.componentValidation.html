@@ -1,0 +1,31 @@
+<form #loginForm="ngForm" (ngSubmit)="loginSubmit(loginForm.value)">
+  Username:
+  <input
+    type="text"
+    name="username"
+    placeholder="Enter your username (only alphabatic)"
+    ngModel
+    required
+    #userid="ngModel"
+    pattern="[a-zA-Z]+$"
+  />
+  <br />
+  <span *ngIf="userid.invalid && userid.touched" style="color: red"> Please enter the password </span>
+
+  <br />
+  Password:
+  <input
+    type="password"
+    name="password"
+    placeholer="Enter your password"
+    ngModel
+    minlength="5"
+    required
+    #passcode="ngModel"
+  />
+  <br />
+  <span *ngIf="passcode.invalid && passcode.touched" style="color: red"> Please enter the password </span>
+  <br />
+  <!-- If any field is  invalid the login button should be disabled -->
+  <button type="submit" [disabled]="loginForm.invalid">Login</button>
+</form>

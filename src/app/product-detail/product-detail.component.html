@@ -1,0 +1,65 @@
+
+    <h2 class="text-success">{{titleFromParent}}</h2>
+
+    <div class="row mt-2">
+      <div class="col col-md-4 offset-md-4">
+        <a class="btn btn-primary" routerLink="/New">Create</a>
+      </div>
+    </div>
+
+    <table class="table table-borderless">
+        <thead>
+          <tr style = "background: rgb(0, 150, 80);">
+              <th> Select</th>
+              <th>ID</th>
+              <th>Name</th>
+              <th>PRICE</th>
+              <th>  
+                <b>{{todaydate | date:'d/M/y'}}</b>  
+                <b>{{todaydate | date:'shortTime'}}</b>  </th>
+          </tr>
+          </thead>
+        
+         <!-- <tr *ngFor = "let product of products">
+              <td>{{product.id}}</td>
+              <td>{{product.pname|uppercase}}</td>
+              <td>{{product.price | number: '3.2-3' | currency:"USD"}}</td> 
+          </tr> -->
+    <tbody>
+          <tr *ngFor = "let product of products">
+           
+            <td>{{product.id}}</td>
+            <td>{{product.pname}}</td>
+            <td>{{product.price}}</td> 
+            <td> 
+                <button type="button" class="btn btn-warning" [routerLink]="['/Edit', product.id]">Edit</button>  &nbsp;&nbsp;&nbsp;
+                <button type="button" (click)="openDeleteModal(product.id)" class="btn btn-danger">Delete</button>
+            </td>
+            </tr>
+          <tr *ngIf = "products && products.length==0 ">
+            <td colspan = "3">No records found!</td>
+        </tr>
+    </tbody>
+   
+        <!--  <h1>Percent Pipe</h1>
+          <b>{{00.54565 | percent}}</b> -->
+
+<!-- Modal -->
+<div class="modal" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Warning!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure to delete the item?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" (click)="delete()">Confirm Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+Total records are : {{totalrecords}}

@@ -1,0 +1,61 @@
+<H2> Login with Template</H2>
+<form #loginForm="ngForm" (ngSubmit)="loginSubmit(loginForm.value)">
+    Username:
+    <input
+      type="text"
+      name="username"
+      placeholder="Enter your username (only alphabatic)"
+      ngModel
+      required
+      #userid="ngModel"
+      pattern="[a-zA-Z]+$"
+    />
+    <br />
+    <span *ngIf="userid.invalid && userid.touched" style="color: red"> Please enter the username</span>
+  
+    <br />
+    Password:
+    <input
+      type="password"
+      name="password"
+      placeholer="Enter your password"
+      ngModel
+      minlength="5"
+      required
+      #passcode="ngModel"
+    />
+    <br />
+    <span *ngIf="passcode.invalid && passcode.touched" style="color: red"> Please enter the password </span>
+    <br />
+   <!-- <button type="submit" [disabled]="loginForm.invalid">Login</button> -->
+    <button type="submit" >Login</button>
+  </form>
+<!--SIMPLE FOrm
+    <form #loginForm="ngForm" (ngSubmit)="loginSubmit(loginForm.value)">
+    Username:
+    <input
+      type="text"
+      name="username"
+      placeholder="Enter your username"
+      ngModel
+      required
+    />
+    <br />
+    <span style="color: red"> Please enter the username</span> 
+  
+    <br />
+    Password:
+    <input
+      type="password"
+      name="password"
+      placeholer="Enter your password"
+      ngModel
+      required
+    />
+    <br />
+  
+    <button type="submit">Login</button>
+    <span style="color: red"> Please enter the password</span> 
+    <br />
+  </form> -->
+
